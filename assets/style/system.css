@@ -1,10 +1,15 @@
 .wind-cardapio {
+    margin-top: 6px;
+    padding: 0 5px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 7px;
 }
 
 .box-list {
     width: 100%;
+    max-width: 900px;
     height: 80vh;
     padding: 12px;
 
@@ -18,15 +23,26 @@
 }
 
 .conteiner-list {
-    width: 100%;
+    width: calc(100% + 10px);
+    padding-right: 10px;
+    margin-right: -10px;
+
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
     grid-template-rows: 350px 350px;
     gap: 9px;
+}
+
+@media screen and (max-width: 1080px) {
+    .conteiner-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
 /* Largura da barra */
@@ -129,7 +145,7 @@
     background: var(--color-main);
     color: var(--color-text);
     font-size: var(--font-size-icon);
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -146,7 +162,7 @@
 ====================================
 */
 .box-pedidos {
-    width: 400px;
+    min-width: 300px;
     height: 80vh;
     background: var(--bg-color-sub);
     border-radius: 13px;
@@ -167,8 +183,8 @@
 .cont-header span {
     background: var(--color-main);
     color: var(--color-text);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 9px;
+    border-radius: 8px;
 }
 
 .cont-header div {
@@ -196,26 +212,26 @@
 
 
 .box-list-peds {
-    width: 100%;
-    height: 300px;
-    /* overflow-y: auto;
-    overflow-x: hidden; */
+    width: calc(100% + 5px);
+    margin-top: 17px;
+    margin-bottom: 17px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+    margin-right: -5px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
-
-.box-list-peds::after {
-    content: '';
-    width: 500px;
-    height: 900px;
-    background: #e6b800;
-    z-index: 1000;
-    /* overflow-y: auto;
-    overflow-x: hidden; */
-}
-
 
 /* Largura da barra */
+
 .box-list-peds::-webkit-scrollbar {
-    width: 4px;
+    position: absolute;
+    width: 5px;
+    right: 20px;
+    margin-left: 20px;
 }
 
 /* Fundo da barra */
@@ -243,8 +259,7 @@
 .add-peds-check div {
     display: flex;
     align-items: center;
-    gap: 5px
-    ;
+    gap: 5px;
 }
 
 .box-list-peds .add-peds-check img {
@@ -265,4 +280,104 @@
     text-align: right;
     font-size: var(--font-size-text-m);
     color: var(--color-text-sub);
+}
+
+
+.box-check {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.boxs-valores {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    padding: 6px;
+    border: 2px solid var(--bg-color-border);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.boxs-valores::before {
+    content: '';
+    width: 100%;
+    height: 54px;
+    background: var(--bg-color-border);
+    position: absolute;
+    border-radius: initial;
+    top: 0;
+    left: 0;
+}
+
+.boxs-valores .box-subValor {
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.boxs-valores .box-subValor div {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.boxs-valores .box-subValor div p,
+.boxs-valores .box-subValor div a {
+    font-size: var(--font-size-text-m);
+    color: var(--color-text-sub);
+    font-weight: 500;
+}
+
+.boxs-valores .box-subValor div a {
+    font-size: var(--font-size-text-m);
+    color: var(--color-main);
+}
+
+.boxs-valores .box-subValor div a {
+    font-size: var(--font-size-text-m);
+    color: var(--color-main);
+}
+
+
+
+
+.box-valorFinal {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.box-valorFinal p {
+    font-weight: 600;
+    font-size: var(--font-size-text-s);
+    color: var(--color-main);
+}
+
+.btn-finalized {
+    width: 100%;
+    height: 40px;
+    background: var(--color-main);
+    border: none;
+    border-radius: 10px;
+
+
+    font-family: var(--font-style);
+    font-size: var(--font-size-sub-title);
+    color: var(--color-main-op);
+    cursor: pointer;
+}
+
+.btn-finalized:active,
+.boxs-valores .box-subValor div a:active {
+    transform: scale(0.96);
 }

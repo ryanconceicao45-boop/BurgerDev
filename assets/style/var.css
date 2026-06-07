@@ -17,7 +17,7 @@
     --bg-color-border: #1F1F1F;
 
     --color-main: #FCC002;
-    --color-main-op: #1f1b0c;
+    --color-main-op: #1c180c;
     --color-money: #96FF99;
 
     --color-text: #0B0B0B;
@@ -27,7 +27,8 @@
 
     --font-size-title: clamp(28px, 1vw, 35px);
     --font-size-sub-title: clamp(20px, 1vw, 25px);
-    --font-size-text-m: clamp(14px, 1vw, 16px);
+    --font-size-text-s: clamp(16px, 1vw, 17px);
+    --font-size-text-m: clamp(12px, 1vw, 13px);
     --font-size-icon: clamp(30px, 1vw, 35px);
 }
 
