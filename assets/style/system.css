@@ -1,0 +1,154 @@
+.wind-cardapio {
+    display: flex;
+    gap: 7px;
+}
+
+.box-list {
+    width: 100%;
+    height: 80vh;
+    padding: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--bg-color-sub);
+    border-radius: 13px;
+    border: 2px solid var(--bg-color-border);
+}
+
+.conteiner-list {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 350px 350px;
+    gap: 9px;
+}
+
+/* Largura da barra */
+.conteiner-list::-webkit-scrollbar {
+    width: 6px;
+    margin-right: 20px;
+}
+
+/* Fundo da barra */
+.conteiner-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Cor do scroll */
+.conteiner-list::-webkit-scrollbar-thumb {
+    background: #786414;
+    border-radius: 10px;
+}
+
+/* Hover */
+.conteiner-list::-webkit-scrollbar-thumb:hover {
+    background: #e6b800;
+}
+
+
+img {
+    width: 200px;
+}
+
+.box-card {
+    width: 285px;
+    background: var(--color-main-op);
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.sub-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+    background: var(--color-main);
+}
+
+.sub-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-infos-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-infos-text h3 {
+    margin-top: 10px;
+    font-family: var(--font-style);
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    color: var(--color-text-sub);
+    line-height: 2px;
+}
+
+.sub-infos-text p {
+    margin-top: 25px;
+    font-family: var(--font-style);
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    line-height: 2px;
+    color: var(--color-main);
+}
+
+
+.sub-infos-text button {
+    margin-top: 20px;
+    background: var(--color-main);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 15px;
+    font-size: var(--font-size-text-m);
+}
+
+.sub-infos-text button span {
+    color: var(--color-text);
+    font-size: var(--font-size-text-m);
+}
+
+.sub-infos .add-icons {
+    margin-right: 10px;
+    background: var(--color-main);
+    color: var(--color-text);
+    font-size: var(--font-size-icon);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sub-infos .add-icons:active,
+.sub-infos-text button:active {
+    transform: scale(0.96);
+}
+
+
+/* 
+====================================
+===========BARRA DE PEDIDOS=========
+====================================
+*/
+.box-pedidos {
+    width: 380px;
+    height: 80vh;
+    background: var(--bg-color-sub);
+    border-radius: 13px;
+    border: 2px solid var(--bg-color-border);
+}
