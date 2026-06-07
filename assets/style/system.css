@@ -52,10 +52,6 @@
 }
 
 
-img {
-    width: 200px;
-}
-
 .box-card {
     width: 285px;
     background: var(--color-main-op);
@@ -73,6 +69,10 @@ img {
     align-items: center;
     border-radius: inherit;
     background: var(--color-main);
+}
+
+.sub-img img {
+    width: 200px;
 }
 
 .sub-infos {
@@ -146,9 +146,123 @@ img {
 ====================================
 */
 .box-pedidos {
-    width: 380px;
+    width: 400px;
     height: 80vh;
     background: var(--bg-color-sub);
     border-radius: 13px;
     border: 2px solid var(--bg-color-border);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cont-header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 6px;
+}
+
+.cont-header span {
+    background: var(--color-main);
+    color: var(--color-text);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cont-header div {
+    line-height: 20px;
+}
+
+.cont-header div h3 {
+    font-family: var(--font-style);
+    font-weight: 500;
+    font-size: var(--font-size-title);
+    color: var(--color-text-sub);
+}
+
+.cont-header div h3 b {
+    font-family: var(--font-style);
+    font-weight: 500;
+    font-size: var(--font-size-title);
+    color: var(--color-main);
+}
+
+.cont-header div p {
+    font-size: var(--font-size-text-m);
+    color: var(--color-text-sub);
+}
+
+
+.box-list-peds {
+    width: 100%;
+    height: 300px;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+}
+
+.box-list-peds::after {
+    content: '';
+    width: 500px;
+    height: 900px;
+    background: #e6b800;
+    z-index: 1000;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+}
+
+
+/* Largura da barra */
+.box-list-peds::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Fundo da barra */
+.box-list-peds::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Cor do scroll */
+.box-list-peds::-webkit-scrollbar-thumb {
+    background: #786414;
+    border-radius: 10px;
+}
+
+/* Hover */
+.box-list-peds::-webkit-scrollbar-thumb:hover {
+    background: #e6b800;
+}
+
+.add-peds-check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-peds-check div {
+    display: flex;
+    align-items: center;
+    gap: 5px
+    ;
+}
+
+.box-list-peds .add-peds-check img {
+    width: 42px;
+}
+
+.box-list-peds .add-peds-check h5 {
+    font-size: var(--font-size-text-m);
+    color: var(--color-text-sub);
+}
+
+.box-list-peds .add-peds-check h5 span {
+    font-size: var(--font-size-text-m);
+    color: var(--color-main);
+}
+
+.box-list-peds .add-peds-check p {
+    text-align: right;
+    font-size: var(--font-size-text-m);
+    color: var(--color-text-sub);
 }
