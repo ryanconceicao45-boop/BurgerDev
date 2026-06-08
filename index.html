@@ -23,15 +23,15 @@
             </div>
         </div>
         <div class="options-menu">
-            <a class="menu-click" href="#">Cardápio completo</a>
-            <a class="menu-click" href="#">Apenas Veganos</a>
-            <a class="menu-click backPort" href="#wind-inicial">Voltar</a>
+            <a class="menu-click" onclick="MenuAll('All')">Cardápio completo</a>
+            <a class="menu-click" onclick="MenuAll('Vegann')">Apenas Veganos</a>
+            <a class="menu-click backPort" onclick="clickOpenInicia('Voltar')">Menu</a>
         </div>
     </header>
     <section class="wind-inicial">
         <div class="text-bnt-left">
             <h2>A PAIXÃO POR TECNOLOGIA ENCONTRA O AMOR POR <b>HAMBÚRGUERES</b>.</h2>
-            <a href="" class="material-symbols-outlined">
+            <a onclick="clickOpenInicia('Iniciar')" class="material-symbols-outlined">
                 <p>FAZER PEDIDO</p>
                 arrow_right
             </a>
@@ -42,31 +42,6 @@
     <section class="wind-cardapio">
         <div class="box-list">
             <div class="conteiner-list">
-
-
-
-                <div class="box-card">
-                    <div class="sub-img">
-                        <img src="./assets/img/burgues/xsalada.png" alt="">
-                    </div>
-                    <div class="sub-infos">
-                        <div class="sub-infos-text">
-                            <h3>X-Salada</h3>
-                            <p>R$ 21.99</p>
-                            <button class="btn-ingredent">
-                                Ver ingredientes
-                                <span class="material-symbols-outlined">
-                                    arrow_right
-                                </span>
-                            </button>
-                        </div>
-                        <span class="add-icons material-symbols-outlined">
-                            add
-                        </span>
-                    </div>
-                </div>
-
-                
             </div>
         </div>
         <div class="box-pedidos">
@@ -111,8 +86,13 @@
             </div>
         </div>
     </section>
+
+    <section class="wind-ingredients">
+
+    </section>
 </body>
 <script src="./assets/src/products.js"></script>
+<script src="./assets/src/anim.js"></script>
 <script src="./assets/src/scripts.js"></script>
 
 </html>

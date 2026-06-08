@@ -5,6 +5,14 @@
     justify-content: center;
     align-items: center;
     gap: 7px;
+    transform: translateX(100vw);
+    opacity: 0;
+}
+
+
+.wind-cardapio.activeC {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .box-list {
