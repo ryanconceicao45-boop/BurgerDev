@@ -25,7 +25,7 @@
 
     --font-style: "Teko", sans-serif;
 
-    --font-size-title: clamp(28px, 1vw, 35px);
+    --font-size-title: clamp(28px, 1vw, 32px);
     --font-size-sub-title: clamp(20px, 1vw, 25px);
     --font-size-text-s: clamp(16px, 1vw, 17px);
     --font-size-text-m: clamp(12px, 1vw, 13px);

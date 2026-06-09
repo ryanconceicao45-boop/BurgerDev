@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/style/var.css">
     <link rel="stylesheet" href="./assets/style/general.css">
+    <link rel="stylesheet" href="./assets/style/subpanel.css">
     <link rel="stylesheet" href="./assets/style/system.css">
     <title>BurgerDev</title>
 </head>
@@ -55,22 +56,13 @@
                 </div>
             </div>
             <div class="box-list-peds">
-
-                <div class="add-peds-check">
-                    <div>
-                        <img src="./assets/img/burgues/xsalada.png" alt="">
-                        <h5><span>1x</span> - X-Salada</h5>
-                    </div>
-                    <p class="valor-pedido-peds">R$ 14,90</p>
-                </div>
-
             </div>
             <div class="box-check">
                 <div class="boxs-valores">
                     <div class="box-subValor">
                         <div>
                             <p>Final</p>
-                            <p>R$ 0</p>
+                            <p class="finalValor">R$ 0</p>
                         </div>
                         <div>
                             <p>Desconto</p>
@@ -79,7 +71,7 @@
                     </div>
                     <div class="box-valorFinal">
                         <p>Valor Total</p>
-                        <p>R$ 0</p>
+                        <p class="TotalValor">0</p>
                     </div>
                 </div>
                 <button class="btn-finalized">FINALIZAR PEDIDO</button>
@@ -88,11 +80,23 @@
     </section>
 
     <section class="wind-ingredients">
-
+        <div class="box-ingredients">
+            <div class="ing-header">
+                <div>
+                    <h3 class="ing-name">X-Salada</h3>
+                    <p>Ingredientes inclusos</p>
+                </div>
+                <img class="img-ing" src="./assets/img/burgues/xsalada.png" alt="">
+            </div>
+            <div class="List-ingredients">
+            </div>
+            <button class="bnt-backIng">VOLTAR</button>
+        </div>
     </section>
 </body>
 <script src="./assets/src/products.js"></script>
 <script src="./assets/src/anim.js"></script>
 <script src="./assets/src/scripts.js"></script>
+<script src="./assets/src/subpanel.js"></script>
 
 </html>

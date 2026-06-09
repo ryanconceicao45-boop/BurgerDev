@@ -2,8 +2,7 @@
 const windInicial = document.querySelector(".wind-inicial")
 const windMenu = document.querySelector(".options-menu")
 const windCardapio = document.querySelector(".wind-cardapio")
-const time = 0.2
-
+const time = 0.3
 const openMenu = (show) => {
     windMenu.style.transition = `opacity ${time}s ease`
     if (show === "add") {
