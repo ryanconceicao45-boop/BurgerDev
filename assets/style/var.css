@@ -8,6 +8,9 @@
     font-size: 20px;
     color: #fff;
     -webkit-tap-highlight-color: transparent;
+    cursor: default;
+    outline: none;
+    user-select: none;
 }
 
 :root {
@@ -15,6 +18,7 @@
     --bg-color-sub: #0F0F0F;
     --bg-color-sub2: #171717;
     --bg-color-border: #1F1F1F;
+    --bg-color-hd: #1C1C1C;
 
     --color-main: #FCC002;
     --color-main-op: #1c180c;
@@ -32,11 +36,16 @@
     --font-size-icon: clamp(30px, 1vw, 35px);
 }
 
+
 body {
     margin: 0 auto;
     width: 100%;
     max-width: 1200px;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: var(--bg-geral);
 }

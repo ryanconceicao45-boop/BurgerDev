@@ -1,67 +1,70 @@
-// Funcao para voltar para o menu principal
-const windInicial = document.querySelector(".wind-inicial")
-const windMenu = document.querySelector(".options-menu")
-const windCardapio = document.querySelector(".wind-cardapio")
-const time = 0.3
-const openMenu = (show) => {
-    windMenu.style.transition = `opacity ${time}s ease`
-    if (show === "add") {
-        windMenu.style.display = "flex"
-        requestAnimationFrame(() => {
-            windMenu.style.opacity = "1"
-        })
-    } else {
-        windMenu.style.opacity = "0"
-        setTimeout(() => {
-            windMenu.style.display = "none"
-        }, time * 1000);
-    }
+const windInicial = document.querySelector(".wind-inicial");
+const windMenu = document.querySelector(".options-menu");
+const windCardapio = document.querySelector(".wind-cardapio");
+
+const TIME_S = 1000;
+
+const nextFrame = (cb) => requestAnimationFrame(() => requestAnimationFrame(cb));
+
+function showElement(el) {
+    el.style.display = "flex";
+    nextFrame(() => {
+        el.classList.add("is-visible");
+    });
 }
 
-const AnimInicial = (show) => {
-    windInicial.style.transition = `all ${time}s ease`
-    if (show === "add") {
-        windInicial.style.transform = "translateX(100vw)"
-        windInicial.style.opacity = "0"
-        setTimeout(() => {
-            windInicial.style.display = "none"
-        }, time * 1000);
-        setTimeout(() => {
-            AnimCardapio('add')
-        }, time * 1000);
-    } else {
-        AnimCardapio('remove')
-        setTimeout(() => {
-            windInicial.style.display = "flex"
-            requestAnimationFrame(() => {
-                windInicial.style.transform = "translateX(0)"
-                windInicial.style.opacity = "1"
-            })
-        }, time * 1000);
-    }
+function hideElement(el, callback) {
+    el.classList.remove("is-visible");
+    const onEnd = (e) => {
+        if (e.propertyName !== "opacity") return;
+        el.style.display = "none";
+        el.removeEventListener("transitionend", onEnd);
+        callback?.();
+    };
+    el.addEventListener("transitionend", onEnd);
 }
 
+function reverseHide(el) {
+    el.classList.add("is-visible");
 
-const AnimCardapio = (show) => {
-    windCardapio.style.transition = `all ${time}s ease`
-    if (show === "add") {
-        windCardapio.classList.add("activeC")
+    const onEnd = (e) => {
+        if (e.propertyName !== "opacity") return;
+        el.style.display = "none";
+        el.removeEventListener("transitionend", onEnd);
+        showElement(windCardapio);
+        showElement(windMenu)
+    };
+
+    el.addEventListener("transitionend", onEnd);
+}
+
+function reverseShow(el) {
+    hideElement(windCardapio, () => {
+        el.style.display = "flex";
+        nextFrame(() => {
+            el.classList.remove("is-visible");
+        });
+    });
+}
+
+function startAnimationPanel(open) {
+    if (open) {
         allMenu()
+        reverseHide(windInicial);
     } else {
-        windCardapio.classList.remove("activeC")
+        claerListPedidos();
+        hideElement(windMenu)
+        reverseShow(windInicial);
     }
 }
 
+let aberto = false;
+let animation = false;
 
-let aberto = false
-let animation = false
-const clickOpenInicia = (acao) => {
-    if (animation) return
-    animation = true
-    aberto = !aberto
-    AnimInicial(aberto ? "add" : "remove")
-    openMenu(aberto ? "add" : "remove")
-    setTimeout(() => {
-        animation = false
-    }, 1500);
+function clickOpenInicia() {
+    if (animation) return;
+    animation = true;
+    aberto = !aberto;
+    startAnimationPanel(aberto);
+    setTimeout(() => { animation = false; }, TIME_S + 200);
 }

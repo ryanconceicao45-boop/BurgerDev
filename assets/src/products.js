@@ -130,7 +130,29 @@ const listProducts = [
   }
 ]
 
+
+const listDiscont = [
+  {
+    title: "DESCONTO DE 5%",
+    description: "Economize agora!",
+    aboveDescont: 100,
+    valueDescont: 5,
+  },
+  {
+    title: "DESCONTO DE 10%",
+    description: "Economize ainda mais!",
+    aboveDescont: 200,
+    valueDescont: 10,
+  },
+  {
+    title: "DESCONTO DE 15%",
+    description: "Melhor oferta disponível!",
+    aboveDescont: 300,
+    valueDescont: 15,
+  },
+];
+
 const formatarMoeda = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL"
+  style: "currency",
+  currency: "BRL"
 });

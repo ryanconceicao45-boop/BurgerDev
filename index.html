@@ -26,13 +26,13 @@
         <div class="options-menu">
             <a class="menu-click" onclick="MenuAll('All')">Cardápio completo</a>
             <a class="menu-click" onclick="MenuAll('Vegann')">Apenas Veganos</a>
-            <a class="menu-click backPort" onclick="clickOpenInicia('Voltar')">Menu</a>
+            <a class="menu-click backPort" onclick="clickOpenInicia()">Menu</a>
         </div>
     </header>
     <section class="wind-inicial">
         <div class="text-bnt-left">
             <h2>A PAIXÃO POR TECNOLOGIA ENCONTRA O AMOR POR <b>HAMBÚRGUERES</b>.</h2>
-            <a onclick="clickOpenInicia('Iniciar')" class="material-symbols-outlined">
+            <a onclick="clickOpenInicia()" class="material-symbols-outlined">
                 <p>FAZER PEDIDO</p>
                 arrow_right
             </a>
@@ -66,15 +66,18 @@
                         </div>
                         <div>
                             <p>Desconto</p>
-                            <a href="#">Ver Desconto</a>
+                            <a class="btn-add-descont">5% OFF acima de R$ 100</a>
                         </div>
                     </div>
                     <div class="box-valorFinal">
                         <p>Valor Total</p>
-                        <p class="TotalValor">0</p>
+                        <p class="TotalValor">R$ 0</p>
                     </div>
                 </div>
-                <button class="btn-finalized">FINALIZAR PEDIDO</button>
+                <div class="box-btns-pedidos">
+                    <button class="btn-clear-pedidos material-symbols-outlined">contract_delete</button>
+                    <button class="btn-finalized">FINALIZAR PEDIDO</button>
+                </div>
             </div>
         </div>
     </section>
@@ -91,6 +94,27 @@
             <div class="List-ingredients">
             </div>
             <button class="bnt-backIng">VOLTAR</button>
+        </div>
+    </section>
+
+
+    <section class="wind-descont">
+        <div class="box-discont">
+            <div class="header-dsct">
+                <div>
+                    <h3>DESCONTOS</h3>
+                    <p>Escolha o desconto que deseja utilizar.</p>
+                </div>
+                <span class="material-symbols-outlined">
+                    local_activity
+                </span>
+            </div>
+            <div class="list-card-descont">
+            </div>
+            <div class="btns-boxxs-desc">
+                <button class="material-symbols-outlined btn-back-descont">Sair</button>
+                <button class="btn-aplicar-descont">APLICAR</button>
+            </div>
         </div>
     </section>
 </body>
