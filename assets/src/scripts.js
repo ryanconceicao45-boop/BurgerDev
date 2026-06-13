@@ -79,6 +79,7 @@ const clickOpenAddItem = (index) => {
             id: idPedidos++,
             nome: produtoAtual.nome,
             valor: produtoAtual.prince,
+            valorUni: produtoAtual.prince,
             img: produtoAtual.src,
             qtd: 1
         });
@@ -115,6 +116,7 @@ const sumValortotal = () => {
     finalValue.innerHTML = formatarMoeda.format(result)
     TotalValue.innerHTML = formatarMoeda.format(result)
     fucAddDescont()
+    descontBase.length = 0
 }
 
 // FUNCAO PARA AVISAR QUE PRODUTOS ACIMA DE 100 TEM DESCONTO
@@ -142,5 +144,6 @@ const claerListPedidos = () => {
         contListPedidos.innerHTML = '';
         finalValue.innerHTML = formatarMoeda.format(0)
         TotalValue.innerHTML = formatarMoeda.format(0)
+        claerCacheDiscont()
     }
 }

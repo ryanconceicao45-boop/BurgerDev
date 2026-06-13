@@ -40,23 +40,33 @@ const ListCardDescont = document.querySelector(".list-card-descont")
 
 const renderListDescont = () => {
     try {
+        const valueAnterior = Number(finalValue.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
         ListCardDescont.innerHTML = "";
         listDiscont.forEach((item, index) => {
             setTimeout(() => {
                 const box = document.createElement("div");
                 box.classList.add("card-discontp", "card-hidden");
+                const verificad = valueAnterior < item.aboveDescont ? 'disabled' : ''
                 box.innerHTML = `
-                <div>
-                    <h3 class="discont-title">${item.title}</h3>
-                    <p class="discont-descrip">
-                        Economize ${item.valueDescont}% em pedidos acima de R$ ${item.aboveDescont.toFixed(2)}.
-                    </p>
-                </div>
-                <input type="radio" name="radio-disctt" class="discont-rd-style" id="discont-select-${index}" data-index="${index}">`;
+                    <div>
+                        <h3 class="discont-title ${verificad}">${item.title}</h3>
+                        <p class="discont-descrip ${verificad}">
+                            Economize ${item.valueDescont}% em pedidos acima de R$ ${item.aboveDescont.toFixed(2)}.
+                        </p>
+                    </div>
+                    <input
+                        type="radio"
+                        name="radio-disctt"
+                        class="discont-rd-style"
+                        id="discont-select-${index}"
+                        data-index="${index}"
+                        ${verificad}
+                    >
+                `
                 ListCardDescont.appendChild(box);
                 requestAnimationFrame(() => box.classList.add("card-visible"));
             }, index * 300); // 150ms entre cada card
-        });
+        })
     } catch (error) {
         console.log(`Error ao criar os cards de Desconto!`)
     }
@@ -74,8 +84,6 @@ document.addEventListener("change", (e) => {
     }
 });
 
-
-
 function aplicarDesconto(e) {
     windDescontPanelOpen('remover')
     btnAplicaDescont.removeEventListener("click", aplicarDesconto);
@@ -86,8 +94,21 @@ function aplicarDesconto(e) {
         const ValorTotal = Number(TotalValue.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
         const percentual = descontBase[0].valueDescont / 100
         const result = valueAnterior - (valueAnterior * percentual)
+
         btnDescont.textContent = descontBase[0].title + ' APLICADO'
         TotalValue.innerHTML = formatarMoeda.format(result)
+
+
+
+        //         TotalValue.innerHTML = formatarMoeda.format(valueAnterior)
+        // const ValorTotal = Number(TotalValue.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
+        // const percentual = descontBase[0].valueDescont / 100
+        // const result = valueAnterior - (valueAnterior * percentual)
+
+        // console.log(result, percentual)
+        // btnDescont.textContent = descontBase[0].title + ' APLICADO'
+        // TotalValue.innerHTML = formatarMoeda.format(result)
+
     } else {
         TotalValue.innerHTML = formatarMoeda.format(valueAnterior)
         descontBase.length = 0
@@ -139,6 +160,144 @@ btnDescont.addEventListener('click', () => {
 btnBackDescont.addEventListener('click', () => {
     windDescontPanelOpen('remover')
 })
+
+
+const claerCacheDiscont = () => {
+    descontBase.length = 0
+    btnDescont.textContent = '5% OFF acima de R$ 100';
+    btnDescont.style.textDecoration = 'none';
+    btnDescont.style.cursor = 'default';
+}
 // =======================================
 // ==(PAINEL PAINEL DE FINALIZAR PEDIDO)==
 // =======================================
+const windFinalized = document.querySelector('.wind-Finalized')
+
+const boxConfirmed = document.querySelector('.box-confirmed')
+const boxProgress = document.querySelector('.box-Progress')
+const boxfinished = document.querySelector('.box-finished')
+
+const btnFinalizedF = document.querySelector('.btn-finalized')
+const btnConfimarBack = document.querySelector('.btn-confimarBack')
+const btnConfimarComprar = document.querySelector('.btn-confimarComprar')
+
+const SobraDiscont = document.querySelector('.listG-discont')
+const TotalValueFi = document.querySelector('.listG-Total')
+
+const TextCupom = document.querySelector('.text-cupom-disc')
+const contListFinal = document.querySelector('.box-Lista-All-confimed')
+const renderListFinal = () => {
+    contListFinal.innerHTML = ''
+    pedidosClient.forEach((item, index) => {
+        const itens = document.createElement('div')
+        itens.classList.add('cart-row-listG')
+        itens.innerHTML = `
+                <span>${item.nome}</span>
+                <span>${item.qtd}x</span>
+                <span>${formatarMoeda.format(item.valorUni)}</span>
+                <span>${formatarMoeda.format(item.valor)}</span>
+        `
+        contListFinal.appendChild(itens)
+    });
+    const valueAnterior = Number(finalValue.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
+    const ValorTotal = Number(TotalValue.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
+
+    if (descontBase.length !== 0) {
+        const percentual = descontBase[0].valueDescont / 100
+        const resto = valueAnterior * percentual
+
+        SobraDiscont.textContent = formatarMoeda.format(valueAnterior) + ' - ' + formatarMoeda.format(resto)
+        TotalValueFi.textContent = formatarMoeda.format(ValorTotal)
+        TextCupom.textContent = descontBase[0].title + ' APLICADO COM SUCESSO!'
+    } else {
+        SobraDiscont.textContent = 'R$ 0'
+        TotalValueFi.textContent = formatarMoeda.format(ValorTotal)
+        TextCupom.textContent = 'Nenhum cupom de desconto foi aplicado.'
+    }
+}
+
+
+const clearListFinal = () => {
+    contListFinal.innerHTML = ''
+    SobraDiscont.textContent = ''
+    TotalValueFi.textContent = ''
+    TextCupom.textContent = ''
+}
+
+const windFinalPanelOpen = (showPanel) => {
+    const show = showPanel === `active`
+    if (show) {
+        windFinalized.style.display = `flex`
+        requestAnimationFrame(() => {
+            windFinalized.style.opacity = '1'
+            renderListFinal()
+            elShow2(boxConfirmed)
+        })
+    } else {
+        windFinalized.style.opacity = '0';
+        windFinalized.addEventListener('transitionend', (e) => {
+            if (e.propertyName !== 'opacity') return;
+            windFinalized.style.display = 'none';
+            clearListFinal()
+        }, { once: true });
+    }
+}
+
+btnFinalizedF.addEventListener('click', () => {
+    pedidosClient.length !== 0 && windFinalPanelOpen('active')
+})
+
+btnConfimarBack.addEventListener('click', () => {
+    windFinalPanelOpen()
+})
+
+// ─── Constantes ───────────────────────────────────────────────
+const barraPrograss = document.querySelector('.barra-Prograss')
+const TIMER_PROGRESS = 9000 // ms
+
+// ─── Utilitários de exibição ──────────────────────────────────
+const elShow2 = (el) => {
+    el.style.display = 'flex'
+    requestAnimationFrame(() => el.style.opacity = '1')
+}
+const elHide2 = (el) => {
+    el.style.opacity = '0'
+    el.style.display = 'none'
+}
+
+btnConfimarComprar.addEventListener('click', iniciarFluxoCompra)
+
+function iniciarFluxoCompra() {
+    elHide2(boxConfirmed)
+    clearListFinal()
+    iniciarProgress()
+}
+
+const iniciarProgress = () => {
+    elShow2(boxProgress)
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            barraPrograss.classList.add('activeBarr')
+        })
+    })
+    setTimeout(() => {
+        barraPrograss.classList.remove('activeBarr')
+        elHide2(boxProgress)
+        iniciarConcluido()
+    }, TIMER_PROGRESS)
+}
+
+const iniciarConcluido = () => {
+    elShow2(boxfinished)
+    setTimeout(() => {
+        windFinalPanelOpen(`remove`, true)
+        elHide2(boxfinished)
+        elHide2(boxConfirmed)
+    }, TIMER_PROGRESS)
+
+    setTimeout(() => {
+        clickOpenInicia()
+    }, TIMER_PROGRESS + 1200)
+}
+
+

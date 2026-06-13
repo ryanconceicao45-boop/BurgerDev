@@ -52,6 +52,7 @@ function startAnimationPanel(open) {
         allMenu()
         reverseHide(windInicial);
     } else {
+        claerCacheDiscont()
         claerListPedidos();
         hideElement(windMenu)
         reverseShow(windInicial);

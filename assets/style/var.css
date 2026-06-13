@@ -33,6 +33,7 @@
     --font-size-sub-title: clamp(20px, 1vw, 25px);
     --font-size-text-s: clamp(16px, 1vw, 17px);
     --font-size-text-m: clamp(12px, 1vw, 13px);
+    --font-size-text-t: clamp(9px, 1vw, 11px);
     --font-size-icon: clamp(30px, 1vw, 35px);
 }
 
